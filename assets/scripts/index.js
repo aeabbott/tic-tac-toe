@@ -18,5 +18,5 @@ $(() => {
   $(document).ready(gameEvents.newGame)
   // when a square is clicked grab the X or O that should be placed
   $('#game-board').children('').children('').on('click', gameEvents.setMark)
-  // $(‘#selector’).off(‘click’)
+  $('#game-board').children('').children('').on('click', gameEvents.switchPlayers)
 })
