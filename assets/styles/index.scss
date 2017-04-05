@@ -1,2 +1,20 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$pure-black: #000;
+
+h1{
+  text-align: center;
+}
+
+.game-board {
+  height: 450px;
+  margin: auto;
+  width: 450px;
+}
+
+.box {
+  border: 1px solid $pure-black;
+  height: 150px;
+  width: 150px;
+}
