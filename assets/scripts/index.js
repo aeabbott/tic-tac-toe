@@ -18,8 +18,9 @@ const authEvents = require('./auth/events.js')
 
 $(() => {
   authEvents.addHandlers()
-  $(document).ready(gameEvents.newGame)
+  $(document).ready(gameEvents.gameRestart)
   // when a square is clicked grab the X or O that should be placed
   $('#game-board').children('').children('').on('click', gameEvents.setMark)
   $('#game-board').children('').children('').on('click', gameEvents.switchPlayers)
+  $('.new-game-btn').on('click', gameEvents.gameRestart)
 })
