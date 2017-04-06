@@ -15,17 +15,26 @@
       <h1>Amanda's Tic Tac Toe Game</h1>
       <!-- sign up feature-->
       <form id="sign-up">
-  <fieldset>
-    <legend>Sign up!</legend>
-    <input type = "text" name = "credentials[email]" id= "sign-up-email" placeholder = "Email goes here">
-    <input type = "password" name = "credentials[password]" id= "sign-up-password" placeholder = "Password goes here">
-    <input type = "password" name = "credentials[password_confirmation]" id= "sign-up-password-confirmation" placeholder = "Password confirmation goes here">
-    <input type="submit" name="submit" value="Sign up!">
-  </fieldset>
-</form>
-    <div class="container">
+        <fieldset>
+          <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" value="" placeholder="email">
+          <input type="password" name="credentials[password]" value="" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
+          <input type="submit" name="submit" value="Sign up!">
+        </fieldset>
+      </form>
+      <!-- sign in feature -->
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" value="" placeholder="email">
+          <input type="password" name="credentials[password]" value="" placeholder="password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
   <!--gameboard-->
-    <div class= "game-board" id= 'game-board'>
+    <div class="container">
+      <div class= "game-board" id= 'game-board'>
       <div class="row">
         <div class="col-xs-4 box" id= '0'>Box 1</div>
         <div class="col-xs-4 box" id= '1'>Box 2</div>
