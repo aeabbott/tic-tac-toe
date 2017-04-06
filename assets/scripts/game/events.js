@@ -87,11 +87,13 @@ const checkWin = function () {
     gameBoard[0] && gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] ||
     gameBoard[2] && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
     $('#game-board').children('').children('').off('click')
+    $('#game-status').text(currentPlayer + ' is the winner')
   } else if (moveCount >= 9) {
     console.log('cats win!')
     // return (win = false)
   }
 }
+
 
 module.exports = {
   gameRestart,
