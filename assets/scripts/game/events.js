@@ -79,7 +79,6 @@ const checkWin = function () {
   }
 }
 
-
 module.exports = {
   switchPlayers,
   setMark
