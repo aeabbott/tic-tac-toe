@@ -4,19 +4,22 @@ let moveCount = 0
 const playerOne = 'X'
 const playerTwo = 'O'
 let currentPlayer = playerOne
-const gameBoard = new Array(9)
-let win
+let gameBoard = new Array(9)
+let win = false
 
-// function to set the square to X or O depending one whose turn it is
-const switchPlayers = function () {
-  console.log('swtich player function was ran')
-  // if current player is player one console log X
-  if (currentPlayer === playerOne) {
-    return (currentPlayer = playerTwo)
-  } else if (currentPlayer === playerTwo) {
-    return (currentPlayer = playerOne)
-  }
+// game Restart
+const gameRestart = function (event) {
+  $('#game-board').children('').children('').empty()
+  console.log('game restart function was ran')
+  moveCount = 0
+  //currentPlayer = playerOne
+  gameBoard = new Array(9)
+  win = false
+  console.log('move count after restart is: ', moveCount, 'gameboard array is', gameBoard, 'current player is', currentPlayer)
+$('#game-board').children('').children('').off('click')
+$('#game-board').children('').children('').on('click', setMark)
 }
+
 
 /* if box was clicked by playerOne set box to "X" and push box
  cordinates to playerOne array if box was clicked by playerTwo
@@ -41,7 +44,7 @@ const setMark = function (event) {
       // if player two made a selection display an O
       $('#' + this.id).text('O')
       // push playerTwo's selection to their array
-      gameBoard.splice(this.id, 1, '0')
+      gameBoard.splice(this.id, 1, 'O')
       console.log('Player Two Selections', gameBoard)
     }
   }
@@ -50,7 +53,18 @@ const setMark = function (event) {
   console.log(cells, ' was pressed by', currentPlayer)
   $('#' + this.id).off('click')
   console.log('click off ran for: ', cells)
-  // push player's selection to their array
+  switchPlayers()
+}
+
+// function to set the square to X or O depending one whose turn it is
+const switchPlayers = function () {
+  console.log('swtich player function was ran')
+  // if current player is player one console log X
+  if (currentPlayer === playerOne) {
+    return (currentPlayer = playerTwo)
+  } else if (currentPlayer === playerTwo) {
+    return (currentPlayer = playerOne)
+  }
 }
 
 /* 0 | 1 | 2
@@ -80,6 +94,7 @@ const checkWin = function () {
 }
 
 module.exports = {
+  gameRestart,
   switchPlayers,
   setMark
 }

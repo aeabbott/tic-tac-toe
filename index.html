@@ -39,6 +39,15 @@
           <input type="submit" name="submit" value="Sign out!">
         </fieldset>
       </form>
+      <!--change password-->
+      <form id="change-password">
+        <fieldset>
+          <legend>Change Password!</legend>
+          <input type = "password" name = "passwords[old]" id= "change-password-old" placeholder = "Old password goes here">
+          <input type = "password" name = "passwords[new]" id= "change-password-new" placeholder = "New password goes here">
+          <input type="submit" name="submit" value="Change password!">
+        </fieldset>
+      </form>
   <!--gameboard-->
     <div class="container">
       <div class= "game-board" id= 'game-board'>
@@ -59,5 +68,12 @@
       </div>
     </div>
   </div>
+  <!--restart button-->
+  <div class="container">
+	<div class="row">
+		<button type="button" class="btn btn-primary btn-default new-game-btn" >New Game</button>
+	</div>
+</div>
+
     </body>
 </html>
