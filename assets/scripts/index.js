@@ -2,7 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const gameEvents = require('./game/events')
+const gameEvents = require('/Users/amandaabbott/wdi/projects/tic-tac-toe-client/assets/scripts/game/events.js')
 
 $(() => {
   setAPIOrigin(location, config)

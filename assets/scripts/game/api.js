@@ -9,31 +9,55 @@ const newGame = function() {
     method: 'POST',
     url: config.apiOrigin + '/games',
     headers: {
-      Authorization: 'Token token=' + store.user.token ,
+      Authorization: 'Token token=' + store.user.token
     },
     data: '{}'
   })
 }
 
+//const cell = $('#game-board').children('').children('')
+const value = gameStore.currentPlayer
 
-const update = function () {
+const updateGame = function (cell,currentPlayer) {
+  console.log('update game ran')
   return $.ajax({
-    url: config.apiOrigin + '/games/' + data.game.id,
+    url: config.apiOrigin + '/games/' + 32,
     method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data: {
-      "game": {
-        "cell": {
-          "index": ,
-          "value":
-        },
-        "over":
+         'game': {
+           'cell': {
+             'index': cell,
+             'value': currentPlayer
+           }
+         }
+       }
+     })
+   }
+
+   const updateGameStatus = function () {
+     console.log('update game ran')
+     return $.ajax({
+       url: config.apiOrigin + '/games/' + 32,
+       method: 'PATCH',
+       headers: {
+         Authorization: 'Token token=' + store.user.token
+       },
+       data: {
+            'game': {
+              'over': true
+            }
+          }
+        })
       }
-}
-  })
-}
+
 
 
 
 module.exports = {
- newGame
+ newGame,
+ updateGame,
+ updateGameStatus
 }

@@ -1,25 +1,40 @@
 'use Strict'
+//require api folder from game so that events can pass info to back end
+const gameApi = require('./api.js')
+const gameUi = require('./ui.js')
 
 let moveCount = 0
 let playerOne = 'X'
 let playerTwo = 'O'
 let currentPlayer = playerOne
 let gameBoard = new Array(9)
-let win = false
+let over = false
 
 // game Restart
 const gameRestart = function (event) {
   $('#game-board').children('').children('').empty()
   console.log('game restart function was ran')
   moveCount = 0
-  //currentPlayer = playerOne
+  // currentPlayer = playerOne
   gameBoard = new Array(9)
   currentPlayer = playerOne
-  win = false
+  over = false
   console.log('move count after restart is: ', moveCount, 'gameboard array is', gameBoard, 'current player is', currentPlayer)
-$('#game-board').children('').children('').off('click')
-$('#game-board').children('').children('').on('click', setMark)
-$('#game-status').text("Let's get ready to rumble")
+  $('#game-board').children('').children('').off('click')
+  $('#game-board').children('').children('').on('click', setMark)
+  $('#game-status').text("Let's get ready to rumble")
+  // create game object
+  gameApi.newGame()
+  .then(gameUi.onSuccess)
+  .catch(gameUi.onError)
+}
+
+//log the array elements after each turn so that we can send the index and element over to the backend
+//function logArrayElements(element, index, array) {
+  //console.log('a[' + index + '] = ' + element)
+
+const sendMove = function(){
+
 }
 
 
@@ -27,12 +42,11 @@ $('#game-status').text("Let's get ready to rumble")
  cordinates to playerOne array if box was clicked by playerTwo
  set box to O and push box cordinates to playerTwo array */
 const setMark = function (event) {
-  event.preventDefault()
   const cells = this.id
   moveCount = moveCount += 1
   // Player One's Logic
   if (moveCount < 10) {
-    console.log('game status', win)
+    console.log('game status', over)
     if (currentPlayer === playerOne) {
       // if playerOne made a selection display X
       $('#' + this.id).text('X')
@@ -41,6 +55,9 @@ const setMark = function (event) {
       console.log('Player One Selections:', gameBoard)
       // does playerOne's Array match the winning combination?
       checkWin(gameBoard)
+      gameApi.updateGame(cells, currentPlayer)
+      .then(gameUi.onSuccess)
+      .catch(gameUi.onError)
       // Player Two's Logic
     } else if (currentPlayer === playerTwo) {
       // if player two made a selection display an O
@@ -49,13 +66,16 @@ const setMark = function (event) {
       gameBoard.splice(this.id, 1, 'O')
       console.log('Player Two Selections', gameBoard)
       checkWin(gameBoard)
+      gameApi.updateGame(cells, currentPlayer)
+      .then(gameUi.onSuccess)
+      .catch(gameUi.onError)
     }
   }
   console.log('this is the number of total moves', moveCount)
   // prevent user from selecting same cell twice
   console.log(cells, ' was pressed by', currentPlayer)
   $('#' + this.id).off('click')
-  console.log('click off ran for: ', cells)
+  console.log('click off ran for: ', this.id)
   switchPlayers()
 }
 
@@ -91,11 +111,14 @@ const checkWin = function () {
     gameBoard[2] && gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6]) {
     $('#game-board').children('').children('').off('click')
     $('#game-status').text(currentPlayer + ' is the winner')
+    over = true
+    gameApi.updateGameStatus()
   } else if (moveCount >= 9) {
     $('#game-status').text('Cats win!')
-    // return (win = false)
+    gameApi.updateGameStatus()
   }
 }
+
 
 
 module.exports = {
