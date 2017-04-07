@@ -1,7 +1,6 @@
 const config = require('../config')
-const gameStore = require('../gameStore')
 const store = require('../store')
-
+const gameStore = require('../gameStore.js')
 
 const newGame = function() {
   console.log('new game back end ran')
@@ -19,7 +18,7 @@ const newGame = function() {
 const updateGame = function (cell,currentPlayer) {
   console.log('update game ran')
   return $.ajax({
-    url: config.apiOrigin + '/games/' + 43,
+    url: config.apiOrigin + '/games/' +  gameStore.gameStore.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -35,17 +34,17 @@ const updateGame = function (cell,currentPlayer) {
      })
    }
 
-   const updateGameStatus = function () {
+   const updateGameStatus = function (over) {
      console.log('update game ran')
      return $.ajax({
-       url: config.apiOrigin + '/games/' + 33,
+       url: config.apiOrigin + '/games/' + gameStore.gameStore.game.id,
        method: 'PATCH',
        headers: {
          Authorization: 'Token token=' + store.user.token
        },
        data: {
             'game': {
-              'over': true
+              'over': over
             }
           }
         })

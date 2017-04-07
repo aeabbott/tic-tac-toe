@@ -13,6 +13,8 @@ let over = false
 // game Restart
 const gameRestart = function (event) {
   $('#game-board').show()
+  $('#game-stats').show()
+  $('#game-status').show()
   $('#game-board').children('').children('').empty()
   console.log('game restart function was ran')
   moveCount = 0
@@ -110,10 +112,15 @@ const checkWin = function () {
     $('#game-board').children('').children('').off('click')
     $('#game-status').text(currentPlayer + ' is the winner')
     over = true
-    gameApi.updateGameStatus()
+    gameApi.updateGameStatus(over)
+    .then(gameUi.onSuccess)
+    .catch(gameUi.onError)
   } else if (moveCount >= 9) {
+    over = true
+    gameApi.updateGameStatus(over)
+    .then(gameUi.onSuccess)
+    .catch(gameUi.onError)
     $('#game-status').text('Cats win!')
-    gameApi.updateGameStatus()
   }
 }
 
@@ -128,6 +135,8 @@ const hideBoard = function() {
   $('#game-board').hide()
   $('.new-game-btn').hide()
   $('.get-stats-btn').hide()
+  $('#game-stats').hide()
+  $('#game-status').hide()
 
 }
 
