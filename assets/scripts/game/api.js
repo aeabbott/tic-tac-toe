@@ -15,13 +15,11 @@ const newGame = function() {
   })
 }
 
-//const cell = $('#game-board').children('').children('')
-const value = gameStore.currentPlayer
 
 const updateGame = function (cell,currentPlayer) {
   console.log('update game ran')
   return $.ajax({
-    url: config.apiOrigin + '/games/' + 32,
+    url: config.apiOrigin + '/games/' + 43,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -40,7 +38,7 @@ const updateGame = function (cell,currentPlayer) {
    const updateGameStatus = function () {
      console.log('update game ran')
      return $.ajax({
-       url: config.apiOrigin + '/games/' + 32,
+       url: config.apiOrigin + '/games/' + 33,
        method: 'PATCH',
        headers: {
          Authorization: 'Token token=' + store.user.token
@@ -53,11 +51,22 @@ const updateGame = function (cell,currentPlayer) {
         })
       }
 
+      const indexGameStats = function () {
+        return $.ajax({
+          url: config.apiOrigin + '/games',
+          method: 'GET',
+          headers: {
+            Authorization: 'Token token=' + store.user.token
+          }
+        })
+      }
+
 
 
 
 module.exports = {
  newGame,
  updateGame,
- updateGameStatus
+ updateGameStatus,
+ indexGameStats
 }

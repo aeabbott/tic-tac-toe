@@ -12,6 +12,7 @@ let over = false
 
 // game Restart
 const gameRestart = function (event) {
+  $('#game-board').show()
   $('#game-board').children('').children('').empty()
   console.log('game restart function was ran')
   moveCount = 0
@@ -33,9 +34,6 @@ const gameRestart = function (event) {
 //function logArrayElements(element, index, array) {
   //console.log('a[' + index + '] = ' + element)
 
-const sendMove = function(){
-
-}
 
 
 /* if box was clicked by playerOne set box to "X" and push box
@@ -119,10 +117,25 @@ const checkWin = function () {
   }
 }
 
+const getGameStats = function (){
+  console.log('get Game Stats ran')
+  gameApi.indexGameStats()
+  .then(gameUi.onSuccessStats)
+  .catch(gameUi.onError)
+}
+
+const hideBoard = function() {
+  $('#game-board').hide()
+  $('.new-game-btn').hide()
+  $('.get-stats-btn').hide()
+
+}
 
 
 module.exports = {
   gameRestart,
   switchPlayers,
-  setMark
+  setMark,
+  getGameStats,
+  hideBoard
 }

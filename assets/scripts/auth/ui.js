@@ -12,6 +12,10 @@ const signUpFailure = (error) => {
 const signInSuccess = (data) => {
   console.log('signIn success ran data is:', data)
   store.user = data.user
+
+  $('.new-game-btn').show()
+  $('.get-stats-btn').show()
+
 }
 
 const signInFailure = (error) => {
