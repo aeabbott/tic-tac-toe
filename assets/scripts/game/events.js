@@ -1,8 +1,8 @@
 'use Strict'
 
 let moveCount = 0
-const playerOne = 'X'
-const playerTwo = 'O'
+let playerOne = 'X'
+let playerTwo = 'O'
 let currentPlayer = playerOne
 let gameBoard = new Array(9)
 let win = false
@@ -14,10 +14,12 @@ const gameRestart = function (event) {
   moveCount = 0
   //currentPlayer = playerOne
   gameBoard = new Array(9)
+  currentPlayer = playerOne
   win = false
   console.log('move count after restart is: ', moveCount, 'gameboard array is', gameBoard, 'current player is', currentPlayer)
 $('#game-board').children('').children('').off('click')
 $('#game-board').children('').children('').on('click', setMark)
+$('#game-status').text("Let's get ready to rumble")
 }
 
 
@@ -46,6 +48,7 @@ const setMark = function (event) {
       // push playerTwo's selection to their array
       gameBoard.splice(this.id, 1, 'O')
       console.log('Player Two Selections', gameBoard)
+      checkWin(gameBoard)
     }
   }
   console.log('this is the number of total moves', moveCount)
@@ -75,7 +78,7 @@ const switchPlayers = function () {
 const checkWin = function () {
   // let win = false
   console.log('check win was ran')
-  // check all the rows for a win
+    // check all the rows for a win
   if (gameBoard[0] && gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] ||
     gameBoard[3] && gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5] ||
     gameBoard[6] && gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8] ||
@@ -89,7 +92,7 @@ const checkWin = function () {
     $('#game-board').children('').children('').off('click')
     $('#game-status').text(currentPlayer + ' is the winner')
   } else if (moveCount >= 9) {
-    console.log('cats win!')
+    $('#game-status').text('Cats win!')
     // return (win = false)
   }
 }
