@@ -2,7 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const gameEvents = require('./game/events')
+const gameEvents = require('/Users/amandaabbott/wdi/projects/tic-tac-toe-client/assets/scripts/game/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -18,9 +18,11 @@ const authEvents = require('./auth/events.js')
 
 $(() => {
   authEvents.addHandlers()
-  $(document).ready(gameEvents.gameRestart)
+  $(document).ready(gameEvents.hideBoard)
+  //$(document).ready(gameEvents.gameRestart)
+
   // when a square is clicked grab the X or O that should be placed
   $('#game-board').children('').children('').on('click', gameEvents.setMark)
-  $('#game-board').children('').children('').on('click', gameEvents.switchPlayers)
   $('.new-game-btn').on('click', gameEvents.gameRestart)
+  $('.get-stats-btn').on('click', gameEvents.getGameStats)
 })
