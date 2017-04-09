@@ -3,7 +3,7 @@ const store = require('../store')
 const gameStore = require('../gameStore.js')
 
 const newGame = function() {
-  console.log('new game back end ran')
+  // console.log('new game back end ran')
   return $.ajax({
     method: 'POST',
     url: config.apiOrigin + '/games',
@@ -14,11 +14,10 @@ const newGame = function() {
   })
 }
 
-
 const updateGame = function (cell,currentPlayer) {
-  console.log('update game ran')
+  // console.log('update game ran')
   return $.ajax({
-    url: config.apiOrigin + '/games/' +  gameStore.gameStore.game.id,
+    url: config.apiOrigin + '/games/' + gameStore.gameStore.game.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -35,7 +34,7 @@ const updateGame = function (cell,currentPlayer) {
    }
 
    const updateGameStatus = function (over) {
-     console.log('update game ran')
+     // console.log('update game ran')
      return $.ajax({
        url: config.apiOrigin + '/games/' + gameStore.gameStore.game.id,
        method: 'PATCH',
