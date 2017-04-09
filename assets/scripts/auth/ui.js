@@ -6,6 +6,7 @@ const signUpSuccess = (data) => {
   //console.log(data)
   $('.password-mismatch').hide()
   $('.bad-password').hide()
+  $('.update-pass').hide()
 }
 
 const signUpFailure = (error) => {
@@ -24,6 +25,7 @@ const signInSuccess = (data) => {
   $('#sign-out').show()
   $('.password-mismatch').hide()
   $('.bad-password').hide()
+  $('.update-pass').hide()
 
 }
 
