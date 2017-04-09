@@ -16,7 +16,7 @@ const onSuccessStats = function (data){
  // console.log('get Game stats was sucessful', data)
  //const getFormFields = require('../../../lib/get-form-fields')
  const games = Object.keys(data.games).length
-$('#game-stats').text('You have won this many games:' + games)
+$('#game-stats').text('You have played this many games:' + games)
 // console.log(games)
 }
 
