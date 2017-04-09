@@ -137,6 +137,11 @@ const hideBoard = function() {
   $('.get-stats-btn').hide()
   $('#game-stats').hide()
   $('#game-status').hide()
+  $('#change-password').hide()
+  $('#sign-out').hide()
+  $('.bad-password').hide()
+  $('.password-mismatch').hide()
+  $('.update-pass').hide()
 
 }
 
