@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+  <h1>Amanda's Tic Tac Toe Game</h1>
+  <form id="sign-up">
+    <fieldset>
+      <legend>Sign up!</legend>
+      <input type="text" name="credentials[email]" value="" placeholder="email">
+      <input type="password" name="credentials[password]" value="" placeholder="password">
+      <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
+      <input type="submit" name="submit" value="Sign up!">
+    </fieldset>
+  </form>
+  <div class="alert alert-danger password-mismatch" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span> Password doesn't match. Please try again.
+  </div>
+  <!-- sign in feature -->
+  <form id="sign-in">
+    <fieldset>
+      <legend>Sign in!</legend>
+      <input type="text" name="credentials[email]" value="" placeholder="email">
+      <input type="password" name="credentials[password]" value="" placeholder="password">
+      <input type="submit" name="submit" value="Sign in!">
+    </fieldset>
+  </form>
+  <div class="alert alert-danger bad-password" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span> You have entered the wrong password. Please try again.
+  </div>
+  <!--sign out feature -->
+  <form id="sign-out">
+    <fieldset>
+      <!--<legend>Sign out!</legend> -->
+      <input type="submit" name="submit" value="Sign out!">
+    </fieldset>
+  </form>
+  <!--change password-->
+  <form id="change-password">
+    <fieldset>
+      <!--<legend>Change Password!</legend>-->
+      <input type="password" name="passwords[old]" id="change-password-old" placeholder="Old password goes here">
+      <input type="password" name="passwords[new]" id="change-password-new" placeholder="New password goes here">
+      <input type="submit" name="submit" value="Change password!">
+    </fieldset>
+  </form>
+  <div class="alert alert-success update-pass" role="alert">
+  You have sucessfully changed your password!
+</div>
+  <!--gameboard-->
+  <h2 id='game-status'> We love tic tac toe! </h2>
+  <div class="container">
+    <div class="row">
+      <button type="button" class="btn btn-primary btn-default new-game-btn">Play Game/New Game</button>
+    </div>
+    <div class="game-board" id='game-board'>
+      <div class="row">
+        <div class="col-xs-4 box" id='0'>Box 1</div>
+        <div class="col-xs-4 box" id='1'>Box 2</div>
+        <div class="col-xs-4 box" id='2'>Box 3</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 box" id='3'>Box 4</div>
+        <div class="col-xs-4 box" id='4'>Box 5</div>
+        <div class="col-xs-4 box" id='5'>Box 6</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 box" id='6'>Box 7</div>
+        <div class="col-xs-4 box" id='7'>Box 8</div>
+        <div class="col-xs-4 box" id='8'>Box 9</div>
+      </div>
+    </div>
+  </div>
+  <!--restart button-->
+  <div class="container">
+
+    <div class="row">
+      <button type="button" class="btn btn-primary btn-default get-stats-btn">Get Stats</button>
+    </div>
+    <h3 id='game-stats'> Check out your stats by clicking above! </h3>
+  </div>
+
+</body>
+
+</html>
