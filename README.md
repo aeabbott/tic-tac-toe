@@ -4,7 +4,7 @@
 
 Go tic tac toe!
  
- URL:
+ URL: https://aeabbott.github.io/tic-tac-toe/
  
  Technologies Used:
  I used HTML, CSS, Javascript, jquery and Ajax within my files to build out the game. 
